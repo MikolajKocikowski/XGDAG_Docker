@@ -7,13 +7,16 @@ The original hackathon repository is now archived in connection with an upcoming
 - a `Dockerfile` (in two versions)
 - instructions for building and using the container (see below)
 
-### Choose one of the paths, weary wanderer:
+
+## Choose one of the paths, weary wanderer:
 
 - A - `Dockerfile_quick_2025-05-14` - has code mods integrated for speed, may stop working with future XGDAG releases.
 - B - `Dockerfile` - clean docker, requires manual changes to the XGDAG code (as accessed on 2025-05-14), all detailed below.
 
 
-### A - Instructions for Dockerfile_quick_2025-05-14
+## A - Instructions for Dockerfile_quick_2025-05-14
+
+
 
 1. Download the XGDAG repository
 ```bash
@@ -45,7 +48,7 @@ python TrainerScript.py
 
 
 
-### B - Instructions for Dockerfile
+## B - Instructions for Dockerfile
 
 1. Download the XGDAG repository
    
