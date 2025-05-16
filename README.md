@@ -87,11 +87,17 @@ python TrainerScript.py
 
 ## Further analysis
 
-These instructions should provide a functional Docker image (that can be exported into a mobile Docker container), and make the scripts run correctly. However, there remain issues with running specific datasets (also ones from the original XGDAG paper) which make the analyses difficult to replicate - please consult the issues in the original XGDAG repository for discussion and potential solutions. 
+These instructions should yield a functional Docker image (which can also be exported as a portable container) and make the scripts run correctly. However, there remain issues with running specific datasets (also ones from the original XGDAG paper). This makes replicating the analysis or conducting it with new dataset challenging until more documentation is available - please consult the issues in the original XGDAG repository for discussion and potential solutions. 
 
-At the current stage, we are aware the tool requires as input several files, including a .gml interactome and several .txt files with genes, scores and ranking. The interactome can be obtained elsewhere and converted from .sif to .gml format with the script below. The additional files apparently need to be generated with another tool - see: https://github.com/GiDeCarlo/XGDAG/issues/1 and https://github.com/AndMastro/NIAPU/?tab=readme-ov-file.
+As currently understood, the tool requires several input files:
+
+- a .gml interactome - can be converted from .sif with the script below (to get it, Reactome, Biogrid and [this repo](https://github.com/jjjk123/GBA-centrality) may be useful)
+- multiple .txt files containing disease genes, scores, and rankings. They [appear to](https://github.com/GiDeCarlo/XGDAG/issues/1) be generated with a separate tool: [NIAPU](https://github.com/AndMastro/NIAPU/?tab=readme-ov-file).
 
 ```python
+# Python script to convert .sif to .gml
+# Usage: python convert_sif_to_gml.py mynetwork.sif
+
 import os
 import sys
 
