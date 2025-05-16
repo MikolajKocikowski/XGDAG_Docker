@@ -87,11 +87,44 @@ python TrainerScript.py
 
 ## Further analysis
 
-The above may allow to replicate the analysis in the paper, but performing an analysis of another disease requires further, undocumented, steps.
-The script requires several input files, including a .gml interactome and .txt files with genes, scores and ranking, which appantly need to be generated with another tool - see here:
-https://github.com/GiDeCarlo/XGDAG/issues/1
-and
-https://github.com/AndMastro/NIAPU/?tab=readme-ov-file
+These instructions should provide a functional Docker image (that can be exported into a mobile Docker container), and make the scripts run correctly. However, there remain issues with running specific datasets (also ones from the original XGDAG paper) which make the analyses difficult to replicate - please consult the issues in the original XGDAG repository for discussion and potential solutions. 
+
+At the current stage, we are aware the tool requires as input several files, including a .gml interactome and several .txt files with genes, scores and ranking. The interactome can be obtained elsewhere and converted from .sif to .gml format with the script below. The additional files apparently need to be generated with another tool - see: https://github.com/GiDeCarlo/XGDAG/issues/1 and https://github.com/AndMastro/NIAPU/?tab=readme-ov-file.
+
+```python
+import os
+import sys
+
+import networkx
+
+IN_FILE = sys.argv[1]
+OUT_FILE = os.path.splitext(IN_FILE)[0] + "." + "gml"
+
+def read_sif(file_path):
+    G = networkx.Graph()
+    with open(file_path) as f:
+        for line in f:
+            parts = line.strip().split()
+            if len(parts) == 3:
+                node1, interaction, node2 = parts
+                G.add_edge(node1, node2, interaction=interaction)
+            elif len(parts) == 2:
+                node1, node2 = parts
+                G.add_edge(node1, node2)
+            elif len(parts) == 1:
+                G.add_node(parts[0])
+    return G
+
+def convert_sif_to_gml(sif_path, gml_path):
+    G = read_sif(sif_path)
+    networkx.write_gml(G, gml_path)
+    print(f"GML file saved to: {gml_path}")
+
+convert_sif_to_gml(IN_FILE, OUT_FILE)
+
+```
+
+
 
 
 
