@@ -130,6 +130,7 @@ convert_sif_to_gml(IN_FILE, OUT_FILE)
 
 ```
 
+![License: MIT](https://img.shields.io/github/license/your-username/your-repo)
 
 
 
