@@ -130,6 +130,10 @@ convert_sif_to_gml(IN_FILE, OUT_FILE)
 
 ```
 
-![License: MIT](https://img.shields.io/github/license/MikolajKocikowski/XGDAG_Docker)
+## Badges
+
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/MikolajKocikowski/XGDAG_Docker)](https://github.com/yourusername/xgdag_docker/commits/main)
 
 
